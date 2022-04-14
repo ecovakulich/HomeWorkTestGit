@@ -12,8 +12,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        makeTheConflict()
     }
-
+ 
+    
+    func makeTheConflict() {
+        print("confuse Xcode with git conflict")
+    }
 
 }
 
