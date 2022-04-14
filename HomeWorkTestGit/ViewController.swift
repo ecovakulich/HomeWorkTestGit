@@ -15,6 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         createButton()
         createTextFields()
+        
+        makeTheConflict()
     }
     
     func createButton() {
@@ -45,6 +47,10 @@ class ViewController: UIViewController {
     @objc func buttonAction(sender: UIButton!) {
         self.performSegue(withIdentifier: "second", sender: self)
       print("Button tapped")
+    }
+    
+    func makeTheConflict() {
+        print("confuse Xcode with git conflict")
     }
     // MARK: - Navigation
 
