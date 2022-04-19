@@ -8,11 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var textField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createButton()
         createTextFields()
+        self.hideKeyboardWhenTappedAround() 
+        makeTheConflict()
     }
     
     func createButton() {
@@ -25,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     func createTextFields() {
-        let textField: UITextField = UITextField(frame: CGRect(x: 50.0, y: 100.0, width: 200.0, height: 30.0));
+        textField = UITextField(frame: CGRect(x: 50.0, y: 100.0, width: 200.0, height: 30.0))
         self.view.addSubview(textField)
         
         textField.borderStyle = UITextField.BorderStyle.line
@@ -41,9 +45,34 @@ class ViewController: UIViewController {
     }
     
     @objc func buttonAction(sender: UIButton!) {
+        self.performSegue(withIdentifier: "second", sender: self)
       print("Button tapped")
     }
+    
+    func makeTheConflict() {
+        print("confuse Xcode with git conflict")
+    }
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "second" {
+            if let controller = segue.destination as? ShowTextDelegate {
+                controller.showTheText(textField.text ?? "")
+            }
+        }
+    }
+}
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
