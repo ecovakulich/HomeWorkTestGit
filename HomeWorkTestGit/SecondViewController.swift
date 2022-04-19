@@ -27,7 +27,7 @@ class SecondViewController: UIViewController, ShowTextDelegate {
     }
     
     func createLabel(){
-        textLabel.frame = CGRect(x: self.view.frame.width / 2 - 50, y:  self.view.frame.width / 2 - 20, width: 100, height: 40)
+        textLabel.frame = CGRect(x: 50, y:  self.view.frame.width / 2 - 20, width:  self.view.frame.width - 100, height: 40)
         textLabel.backgroundColor = UIColor.gray
         textLabel.textColor = UIColor.black
         textLabel.textAlignment = NSTextAlignment.center

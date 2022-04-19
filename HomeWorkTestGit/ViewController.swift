@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         createButton()
         createTextFields()
-        
+        self.hideKeyboardWhenTappedAround() 
         makeTheConflict()
     }
     
@@ -61,6 +61,18 @@ class ViewController: UIViewController {
                 controller.showTheText(textField.text ?? "")
             }
         }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
